@@ -2,40 +2,41 @@ package mcsrbot.benchmark.mixin;
 
 import mcsrbot.benchmark.screen.BenchmarkScreen;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.widget.AbstractButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
+
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TitleScreen.class)
-public abstract class TitleScreenMixin {
+public abstract class TitleScreenMixin extends Screen {
 
-    @Shadow
-    protected abstract <T extends AbstractButtonWidget> T addButton(T button);
+    // Must provide a constructor that calls the parent class constructor
+    protected TitleScreenMixin(Text title) {
+        super(title);
+    }
 
-    @Inject(
-        method = "init()V",
-        at = @At("TAIL")
-    )
+    @Inject(method = "init()V", at = @At("TAIL"))
     private void addBenchmarkButton(CallbackInfo ci) {
-        TitleScreen screen = (TitleScreen) (Object) this;
+        // Small square button: width 20, height 20
+        // X coordinate: aligned to the left edge of the normal buttons (center - 100), then shifted left by 24 pixels
+        int buttonSize = 20;
+        int x = this.width / 2 - 100 - 24;
+        int y = this.height / 4 + 48; // Align with the top of the normal buttons (roughly the position of the singleplayer button)
 
-        int x = screen.width / 2 - 100;
-        int y = screen.height / 4 + 96;
-
-        addButton(new ButtonWidget(
+        this.addButton(new ButtonWidget(
             x,
             y,
-            200,
-            20,
-            new LiteralText("Speedrun Benchmark"),
+            buttonSize,
+            buttonSize,
+            new LiteralText("B"), // Short text, or leave empty
             button -> MinecraftClient.getInstance().openScreen(
-                new BenchmarkScreen(screen)
+                new BenchmarkScreen(this)
             )
         ));
     }

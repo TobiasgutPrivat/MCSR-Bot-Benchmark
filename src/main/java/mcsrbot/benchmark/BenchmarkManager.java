@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BenchmarkManager {
+    CreateWorldScreen
     private static final Gson GSON =
             new GsonBuilder().setPrettyPrinting().create();
 
