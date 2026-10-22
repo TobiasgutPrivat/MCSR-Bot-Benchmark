@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

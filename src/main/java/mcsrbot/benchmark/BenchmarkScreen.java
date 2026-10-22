@@ -9,6 +9,7 @@ import net.minecraft.text.LiteralText;
 public class BenchmarkScreen extends Screen {
     private final Screen parent;
     private TextFieldWidget seedField;
+    private static String seed = "";
     private String status = "";
 
     public BenchmarkScreen(Screen parent) {
@@ -30,7 +31,8 @@ public class BenchmarkScreen extends Screen {
                 new LiteralText("Seed")
         );
         seedField.setMaxLength(128);
-        // seedField.setSuggestion("Enter a seed...");
+        seedField.setText(seed);
+        seedField.setChangedListener(newText -> seed = newText);
         seedField.setVisible(true);
         addChild(seedField);
 

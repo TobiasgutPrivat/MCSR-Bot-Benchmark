@@ -1,9 +1,13 @@
 # MCSR Bot Benchmark
 
-## Setup
+## Intend of use
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+This is a Speedrunning Benchmark to run Comparable Speedruns
 
-## License
+its independent of how the speedrun is performed
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Backlog
+
+- Capture Run Statistics (like splits)
+- BenchmarkSet UI
+- Set continuation after finishing a run
