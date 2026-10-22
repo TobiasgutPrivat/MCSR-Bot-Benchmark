@@ -16,13 +16,12 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BenchmarkManager {
-    CreateWorldScreen
     private static final Gson GSON =
-            new GsonBuilder().setPrettyPrinting().create();
-
+        new GsonBuilder().setPrettyPrinting().create();
+    
     private static final Path FILE =
-            FabricLoader.getInstance().getConfigDir()
-                    .resolve("speedrun-benchmark-sets.json");
+        FabricLoader.getInstance().getConfigDir()
+        .resolve("speedrun-benchmark-sets.json");
 
     private final List<BenchmarkSet> sets = new ArrayList<>();
 
