@@ -3,7 +3,10 @@
 	"package": "mcsrbot.benchmark.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"TitleScreenMixin"
+		"TitleScreenMixin",
+		"GameMenuScreenMixin",
+		"MoreOptionsDialogAccessor",
+		"CreateWorldScreenAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

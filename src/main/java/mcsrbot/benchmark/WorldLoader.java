@@ -7,7 +7,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 import net.minecraft.client.gui.screen.world.MoreOptionsDialog;
 
-import java.util.OptionalLong;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class WorldLoader {
@@ -30,6 +29,8 @@ public final class WorldLoader {
 
     private static void createWorld(Screen parent, String seed) {
         MinecraftClient client = MinecraftClient.getInstance();
+        // Disconnect from the current world if connected. This is necessary to avoid issues when creating a new world.
+        client.disconnect();
 
         // 1. Build the screen. init() runs when openScreen is called.
         CreateWorldScreen screen = new CreateWorldScreen(parent);
@@ -45,7 +46,7 @@ public final class WorldLoader {
         // 4. Push the seed into MoreOptionsDialog.
         MoreOptionsDialog dialog = accessor.mcsrbot$getMoreOptionsDialog();
         MoreOptionsDialogAccessor dialogAccessor = (MoreOptionsDialogAccessor) dialog;
-        dialogAccessor.mcsrbot$setSeed(OptionalLong.of(seedToLong(seed)));
+        dialogAccessor.mcsrbot$getSeedTextField().setText(String.valueOf(seedToLong(seed)));
 
         // 5. Kick off world creation.
         accessor.mcsrbot$invokeCreateLevel();

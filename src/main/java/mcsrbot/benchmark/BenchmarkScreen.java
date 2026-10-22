@@ -1,6 +1,5 @@
-package mcsrbot.benchmark.screen;
+package mcsrbot.benchmark;
 
-import mcsrbot.benchmark.WorldLoader;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -31,7 +30,7 @@ public class BenchmarkScreen extends Screen {
                 new LiteralText("Seed")
         );
         seedField.setMaxLength(128);
-        seedField.setSuggestion("Enter a seed...");
+        // seedField.setSuggestion("Enter a seed...");
         seedField.setVisible(true);
         addChild(seedField);
 
